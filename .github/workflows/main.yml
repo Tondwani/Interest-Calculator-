@@ -1,0 +1,47 @@
+name: Interest Calculator CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository code
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      # Set up Node.js (for any JavaScript-based tasks)
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      # Install dependencies (if any, you can add npm or other commands here)
+      - name: Install Dependencies
+        run: |
+          npm install
+
+      # Run tests (if you have any)
+      - name: Run Tests
+        run: |
+          npm test
+
+      # Deploy (you can customize deployment here, for example, for GitHub Pages or another hosting service)
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: build
+
+      # Optionally, create a release or deploy to any platform like AWS, Azure, etc.
+      - name: Deploy to Cloud (AWS, Azure, etc.)
+        run: |
+          echo "Deploying to cloud"
+          # Add custom deployment commands here (AWS CLI, Azure CLI, etc.)

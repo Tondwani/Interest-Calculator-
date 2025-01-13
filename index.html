@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Tondwani Craig" />
+    <meta name="description" content="Advanced Interest Calculator" />
+    <meta name="keywords" content="HTML, CSS, JavaScript, Interest Calculator" />
+    <title>Interest Calculator - Simple and Advanced</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+</head>
+<body>
+    <div class="maindiv">
+        <h1 class="header">Interest Calculator - Simple and Advanced</h1>
+
+        <!-- Simple Interest Section -->
+        <div class="div">
+            <h2>Simple Interest Calculator</h2>
+            <label for="simplePrincipal">Amount</label>
+            <input type="number" id="simplePrincipal" placeholder="Enter principal amount" />
+            <br /><br />
+
+            <label for="simpleRate">Interest Rate</label>
+            <input type="range" id="simpleRate" min="1" max="20" step="0.25" value="10.25" onchange="rangeReader()" />
+            <span id="sliderValue">10.25%</span>
+            <br /><br />
+
+            <label for="simpleYears">No. of Years</label>
+            <select id="simpleYears"></select>
+            <br /><br />
+        </div>
+
+        <!-- Compute Button for Simple Interest -->
+        <button onclick="computeSimpleInterest()">Compute Simple Interest</button>
+
+        <br /><br />
+        <span id="result"></span>
+        
+        <!-- Advanced Interest Section -->
+        <div class="input-section">
+            <h2>Advanced Interest Calculator</h2>
+            <label for="compoundPrincipal">Principal Amount:</label>
+            <input type="number" id="compoundPrincipal" placeholder="Enter amount" />
+
+            <label for="compoundRate">Interest Rate:</label>
+            <input type="range" id="compoundRate" min="1" max="20" step="0.25" value="10" onchange="updateSliderValue()">
+            <span id="sliderValue">10%</span>
+
+            <label for="compoundYears">Number of Years:</label>
+            <select id="compoundYears">
+                <option value="1">1</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
+
+            <label for="compounding">Compounding Frequency:</label>
+            <select id="compounding">
+                <option value="Annually">Annually</option>
+                <option value="Semi-Annually">Semi-Annually</option>
+                <option value="Quarterly">Quarterly</option>
+                <option value="Monthly">Monthly</option>
+            </select>
+        </div>
+
+        <!-- Buttons for Advanced Interest Section -->
+        <div class="button-section">
+            <button onclick="computeCompoundInterest()">Compute Compound Interest</button>
+            <button onclick="downloadPDF()">Download Results</button>
+        </div>
+
+        <footer>&#169; Believe</footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
